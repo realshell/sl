@@ -116,17 +116,11 @@ fn add_sl(x: i32, is_fly: bool, is_accident: bool) -> i32 {
         return ERR;
     }
 
-    let mut y: i32 = LINES() / 2 - 3;
-    let mut py1: i32 = 0;
-    let mut py2: i32 = 0;
-    let mut py3: i32 = 0;
+    let y: i32 = LINES() / 2 - 3;
 
-    if is_fly {
-        y = (x / 6) + LINES() - (COLS() / 6) - LOGO_HIGHT;
-        py1 = 2;
-        py2 = 4;
-        py3 = 6;
-    }
+    let py1: i32 = if !is_fly {0} else {2};
+    let py2: i32 = if !is_fly {0} else {4};
+    let py3: i32 = if !is_fly {0} else {6};
     for i in 0..(LOGO_HIGHT + 1) {
         my_mvaddstr(
             y + i,
@@ -440,10 +434,9 @@ fn main() {
             if add_c51(x, is_fly, is_accident) == ERR {
                 break;
             }
-        } else {
-            if add_d51(x, is_fly, is_accident) == ERR {
-                break;
-            }
+        }
+        if add_d51(x, is_fly, is_accident) == ERR {
+            break;
         }
         x -= 1;
         getch();

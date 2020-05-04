@@ -1,1 +1,1 @@
-# sl
+This code is one line by one line copy from https://salsa.debian.org/debian/sl and use Rust Language
